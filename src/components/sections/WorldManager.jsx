@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import MagicWorld from "../worlds/magicworld/MagicWorld";
 import SunflowerWorld from "../Worlds/sunflower/SunflowerWorld";
-import ConstellationWorld from "../Worlds/constellation/ConstellationWorld";
+import ConstellationWorld from "../worlds/constellation/ConstellationWorld";
 import PoemWorld from "../worlds/PoemWorld/PoemWorld";
 
 import "./WorldManager.css";
