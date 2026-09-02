@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import MagicWorld from "../worlds/magicworld/MagicWorld";
-import SunflowerWorld from "../Worlds/sunflower/SunflowerWorld";
+import SunflowerWorld from "../worlds/sunflower/SunflowerWorld";
 import ConstellationWorld from "../worlds/constellation/ConstellationWorld";
 import PoemWorld from "../worlds/PoemWorld/PoemWorld";
 
