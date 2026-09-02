@@ -1,0 +1,421 @@
+/* =========================================
+   MAIN
+   ========================================= */
+
+.this-or-that {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 60;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 30px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(65, 50, 125, 0.08),
+      transparent 55%
+    );
+
+  text-align: center;
+
+  animation:
+    totAppear 1.5s ease forwards;
+}
+
+
+/* =========================================
+   INTRO
+   ========================================= */
+
+.this-or-that-intro,
+.this-or-that-choice {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.tot-eyebrow {
+  margin: 0 0 18px;
+
+  font-family: var(--body);
+
+  font-size: 0.64rem;
+
+  letter-spacing: 0.28em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(255, 255, 255, 0.35);
+}
+
+
+.this-or-that-intro h2 {
+  margin: 0;
+
+  font-family: var(--heading);
+
+  font-size:
+    clamp(2.5rem, 5vw, 5rem);
+
+  font-weight: 500;
+
+  line-height: 1.04;
+
+  letter-spacing: -0.02em;
+
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  text-shadow:
+    0 0 35px
+    rgba(255, 255, 255, 0.06);
+
+  animation:
+    totTextIn 1.5s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+/* =========================================
+   TITLE
+   ========================================= */
+
+.tot-title {
+  margin: 0 0 45px;
+
+  font-family: var(--heading);
+
+  font-size:
+    clamp(2.8rem, 6vw, 5.5rem);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  color:
+    rgba(255, 255, 255, 0.92);
+
+  text-shadow:
+    0 0 30px
+    rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================
+   CHOICE PAIR
+   ========================================= */
+
+.choice-pair {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 30px;
+
+  width: min(800px, 90vw);
+}
+
+
+.choice-card {
+  position: relative;
+
+  width: min(310px, 38vw);
+
+  height: 320px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  border-radius: 24px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.10);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.65s
+      cubic-bezier(0.22, 1, 0.36, 1),
+
+    background 0.5s ease,
+
+    border-color 0.5s ease,
+
+    box-shadow 0.6s ease;
+}
+
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.choice-card:hover {
+  transform:
+    translateY(-8px)
+    scale(1.025);
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  border-color:
+    rgba(255, 255, 255, 0.20);
+
+  box-shadow:
+    0 25px 70px
+    rgba(0, 0, 0, 0.25),
+
+    0 0 45px
+    rgba(130, 110, 210, 0.08);
+}
+
+
+.choice-small {
+  font-family: var(--body);
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.30em;
+
+  color:
+    rgba(255, 255, 255, 0.28);
+}
+
+
+.choice-main {
+  font-size: 4.5rem;
+
+  line-height: 1;
+
+  filter:
+    drop-shadow(
+      0 0 20px
+      rgba(255, 255, 255, 0.08)
+    );
+
+  transition:
+    transform 0.6s ease;
+}
+
+
+.choice-card:hover .choice-main {
+  transform:
+    scale(1.12)
+    translateY(-3px);
+}
+
+
+.choice-label {
+  font-family: var(--heading);
+
+  font-size: 1.7rem;
+
+  font-weight: 500;
+
+  color:
+    rgba(255, 255, 255, 0.82);
+}
+
+
+/* =========================================
+   OR
+   ========================================= */
+
+.choice-divider {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 30px;
+
+  color:
+    rgba(255, 255, 255, 0.25);
+
+  font-family: var(--heading);
+
+  font-size: 1.1rem;
+
+  font-style: italic;
+}
+
+
+/* =========================================
+   SELECTED
+   ========================================= */
+
+.choice-selected {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  pointer-events: none;
+
+  animation:
+    selectedReveal 0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+.choice-selected span {
+  font-family: var(--heading);
+
+  font-size:
+    clamp(4rem, 10vw, 9rem);
+
+  font-weight: 500;
+
+  color:
+    rgba(255, 255, 255, 0.90);
+
+  text-shadow:
+    0 0 60px
+    rgba(150, 130, 255, 0.12);
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes totAppear {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes totTextIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter: blur(0);
+  }
+
+}
+
+
+@keyframes selectedReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.7);
+
+    filter: blur(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1);
+
+    filter: blur(0);
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+  .this-or-that {
+    padding: 20px;
+  }
+
+  .choice-pair {
+    gap: 10px;
+
+    width: 100%;
+  }
+
+  .choice-card {
+    width: calc(50vw - 30px);
+
+    height: 250px;
+
+    border-radius: 18px;
+  }
+
+  .choice-main {
+    font-size: 3.2rem;
+  }
+
+  .choice-label {
+    font-size: 1.35rem;
+  }
+
+  .choice-divider {
+    width: 20px;
+
+    font-size: 0.9rem;
+  }
+
+}

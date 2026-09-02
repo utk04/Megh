@@ -1,0 +1,184 @@
+.video-moment {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 50;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(2, 6, 17, 0.96);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 1.4s ease,
+    visibility 1.4s ease;
+}
+
+.video-moment-visible {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* -------------------------------- */
+/* Background atmosphere             */
+/* -------------------------------- */
+
+.video-moment-background {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(65, 45, 120, 0.12),
+      transparent 55%
+    );
+
+  pointer-events: none;
+}
+
+
+/* -------------------------------- */
+/* Content                           */
+/* -------------------------------- */
+
+.video-moment-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(850px, 92vw);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+/* -------------------------------- */
+/* Video frame                       */
+/* -------------------------------- */
+
+.video-frame {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background: #000;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(90, 70, 180, 0.08);
+
+  transform: scale(0.96);
+
+  transition:
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.video-moment-visible .video-frame {
+  transform: scale(1);
+}
+
+
+/* -------------------------------- */
+/* Actual video                      */
+/* -------------------------------- */
+
+.birthday-video {
+  display: block;
+
+  width: 100%;
+
+  max-height: 78vh;
+
+  object-fit: contain;
+
+  background: #000;
+}
+
+
+/* -------------------------------- */
+/* Caption                           */
+/* -------------------------------- */
+
+.video-caption {
+  font-family: var(--body);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.35);
+
+  animation: captionBreath 3s ease-in-out infinite;
+}
+
+@keyframes captionBreath {
+
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+}
+
+
+/* -------------------------------- */
+/* Mobile                            */
+/* -------------------------------- */
+
+@media (max-width: 600px) {
+
+  .video-moment {
+    padding: 18px;
+  }
+
+  .video-frame {
+    border-radius: 12px;
+  }
+
+  .birthday-video {
+    max-height: 75vh;
+  }
+
+  .video-caption {
+    font-size: 0.58rem;
+
+    letter-spacing: 0.16em;
+  }
+
+}

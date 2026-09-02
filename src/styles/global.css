@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root{
+    --bg:#040814;
+    --surface:#0B1120;
+
+    --primary:#8B5CF6;
+    --secondary:#C084FC;
+
+    --gold:#FBBF24;
+
+    --text:#F8FAFC;
+    --muted:#CBD5E1;
+
+    --glass:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.12);
+
+    --heading:'Cormorant Garamond', serif;
+    --body:'Poppins', sans-serif;
+    --hand:'Allura', cursive;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+    font-family:var(--heading);
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    background:none;
+}

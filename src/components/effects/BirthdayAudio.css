@@ -1,0 +1,133 @@
+.birthday-audio-trigger {
+  position: absolute;
+
+  bottom: 48px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 18px;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  font-family: var(--body);
+  font-size: 0.68rem;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  transition:
+    color 0.4s ease,
+    transform 0.4s ease;
+}
+
+.birthday-audio-trigger:hover {
+  color: rgba(255, 255, 255, 0.9);
+
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.audio-trigger-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.5);
+
+  animation: audioBreath 2s ease-in-out infinite;
+}
+
+.audio-playing {
+  position: absolute;
+
+  bottom: 48px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  font-family: var(--body);
+  font-size: 0.65rem;
+
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.audio-pulse {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: rgba(167, 139, 250, 0.8);
+
+  box-shadow:
+    0 0 10px rgba(139, 92, 246, 0.8);
+
+  animation: audioBreath 1.2s ease-in-out infinite;
+}
+
+.audio-finished {
+  position: absolute;
+
+  bottom: 48px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 20;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 1rem;
+}
+
+@keyframes audioBreath {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+.background {
+  transition:
+    background 2s ease;
+}
+
+.background.experience-started {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(55, 40, 120, 0.28),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(25, 75, 145, 0.20),
+      transparent 45%
+    ),
+    #020611;
+}

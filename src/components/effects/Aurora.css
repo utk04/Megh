@@ -1,0 +1,69 @@
+.aurora-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.18;
+
+  animation: floatAurora 22s ease-in-out infinite;
+}
+
+/* Very subtle violet atmosphere */
+.aurora-1 {
+  width: 520px;
+  height: 420px;
+
+  background: #6d4aff;
+
+  top: -180px;
+  left: 8%;
+}
+
+/* Main blue atmosphere */
+.aurora-2 {
+  width: 650px;
+  height: 520px;
+
+  background: #2563eb;
+
+  bottom: -280px;
+  right: -180px;
+
+  animation-delay: -7s;
+}
+
+/* Very subtle warm violet center */
+.aurora-3 {
+  width: 420px;
+  height: 420px;
+
+  background: #8b5cf6;
+
+  top: 42%;
+  left: 42%;
+
+  opacity: 0.09;
+
+  animation-delay: -13s;
+}
+
+@keyframes floatAurora {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(70px, -45px, 0) scale(1.15);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+

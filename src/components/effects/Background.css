@@ -1,0 +1,21 @@
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(42, 31, 91, 0.22),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(20, 58, 120, 0.16),
+      transparent 45%
+    ),
+    #020611;
+
+  pointer-events: none;
+}

@@ -1,0 +1,212 @@
+.intro {
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  color: white;
+}
+
+/* Main content container */
+
+.intro-content {
+  position: relative;
+
+  z-index: 10;
+
+  width: min(900px, 90%);
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* -------------------------------- */
+/* Greeting                         */
+/* -------------------------------- */
+
+.intro-greeting {
+  font-family: var(--heading);
+
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+
+  font-weight: 500;
+
+  letter-spacing: -0.02em;
+
+  line-height: 1.05;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.08),
+    0 0 50px rgba(120, 100, 255, 0.08);
+
+  opacity: 0;
+
+  filter: blur(10px);
+
+  transform: translateY(20px);
+
+  animation: introGreeting 1.6s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+}
+
+@keyframes introGreeting {
+  to {
+    opacity: 1;
+
+    filter: blur(0);
+
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------- */
+/* Secondary message                */
+/* -------------------------------- */
+
+.intro-message {
+  margin-top: 28px;
+
+  max-width: 720px;
+
+  font-family: var(--body);
+
+  font-size: clamp(1rem, 2vw, 1.35rem);
+
+  font-weight: 300;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.02em;
+
+  color: rgba(226, 232, 240, 0.72);
+}
+
+
+/* Highlighted part of the message */
+
+.intro-message-highlight {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+
+/* -------------------------------- */
+/* Scroll / interaction hint        */
+/* -------------------------------- */
+
+.intro-scroll-hint {
+  position: absolute;
+
+  bottom: 38px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-family: var(--body);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.25em;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.35);
+}
+
+
+/* -------------------------------- */
+/* Mobile                           */
+/* -------------------------------- */
+
+@media (max-width: 600px) {
+
+  .intro-greeting {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+  }
+
+  .intro-message {
+    font-size: 0.95rem;
+
+    line-height: 1.7;
+
+    padding: 0 10px;
+  }
+
+  .intro-scroll-hint {
+    bottom: 28px;
+  }
+
+}
+
+/* =========================================================
+   OPENING TEXT FADE
+   ========================================================= */
+
+
+/* =========================================================
+   SUSPENSE MESSAGE
+   ========================================================= */
+
+.suspense-message {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 30;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform: translateY(12px);
+
+  filter: blur(8px);
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s ease;
+}
+
+.suspense-message-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  filter: blur(0);
+}
+
+.suspense-message p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.86);
+
+  font-family: var(--heading);
+
+  font-size: clamp(2rem, 4vw, 3.8rem);
+
+  font-weight: 500;
+
+  letter-spacing: 0.01em;
+
+  text-align: center;
+
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.08),
+    0 0 50px rgba(130, 110, 220, 0.12);
+}

@@ -1,0 +1,1404 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap");
+
+.magic-world {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #fff8e2;
+  background: linear-gradient(
+    #f6ca89 0%,
+    #f5d79f 32%,
+    #b5cc87 58%,
+    #6e9867 76%,
+    #376449 100%
+  );
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.magic-world *,
+.magic-world *::before,
+.magic-world *::after {
+  box-sizing: border-box;
+}
+
+.magic-world button {
+  font: inherit;
+}
+
+.mw-sky,
+.mw-land,
+.mw-particles,
+.mw-fireflies,
+.mw-flowers,
+.mw-bursts,
+.mw-note-arrival {
+  position: absolute;
+  inset: 0;
+}
+
+.mw-sky {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mw-land {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mw-particles {
+  z-index: 3;
+  pointer-events: none;
+}
+
+.mw-fireflies {
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.mw-sun {
+  position: absolute;
+  left: 50%;
+  top: 33%;
+  width: min(48vw, 650px);
+  height: min(48vw, 650px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fffbd8 0,
+    rgba(255, 225, 142, 0.72) 20%,
+    rgba(255, 191, 83, 0.22) 48%,
+    transparent 70%
+  );
+  animation: sunBreath 5s ease-in-out infinite;
+}
+
+.mw-cloud {
+  position: absolute;
+  width: 330px;
+  height: 78px;
+  border-radius: 50%;
+  background: rgba(255, 248, 220, 0.34);
+  filter: blur(17px);
+  animation: cloudDrift 14s ease-in-out infinite alternate;
+}
+
+.mw-cloud::before,
+.mw-cloud::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.mw-cloud::before {
+  width: 125px;
+  height: 100px;
+  left: 50px;
+  bottom: 5px;
+}
+
+.mw-cloud::after {
+  width: 155px;
+  height: 115px;
+  right: 42px;
+  bottom: 0;
+}
+
+.mw-cloud.c1 {
+  top: 15%;
+  left: -4%;
+}
+
+.mw-cloud.c2 {
+  top: 25%;
+  right: -5%;
+  width: 390px;
+  animation-delay: -6s;
+}
+
+.mw-cloud.c3 {
+  top: 8%;
+  left: 42%;
+  width: 250px;
+  opacity: 0.2;
+  animation-duration: 19s;
+  animation-delay: -10s;
+}
+
+.mw-moon {
+  position: absolute;
+  right: 13%;
+  top: 10%;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #fff5c8;
+  opacity: 0.65;
+  box-shadow: 0 0 35px rgba(255, 231, 146, 0.45);
+}
+
+/* =========================================================
+   LAND
+   ========================================================= */
+
+.mw-hill {
+  position: absolute;
+  left: -5%;
+  width: 110%;
+  border-radius: 50% 50% 0 0;
+}
+
+.mw-hill.h1 {
+  height: 35%;
+  bottom: 21%;
+  background: #90ad70;
+}
+
+.mw-hill.h2 {
+  height: 29%;
+  bottom: 10%;
+  background: #628a5e;
+}
+
+.mw-hill.h3 {
+  height: 25%;
+  bottom: -6%;
+  background: #376449;
+}
+
+.mw-path {
+  position: absolute;
+  left: 50%;
+  bottom: -30%;
+  width: 34%;
+  height: 65%;
+  transform: translateX(-50%);
+  clip-path: polygon(39% 0, 61% 0, 88% 100%, 12% 100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 235, 174, 0.48),
+    transparent
+  );
+}
+
+.mw-tree {
+  position: absolute;
+  bottom: 0;
+  width: 240px;
+  height: 400px;
+}
+
+.mw-tree.left {
+  left: -35px;
+}
+
+.mw-tree.right {
+  right: -35px;
+}
+
+.mw-tree::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 48px;
+  height: 250px;
+  transform: translateX(-50%);
+  border-radius: 45% 45% 12% 12%;
+  background: linear-gradient(90deg, #523627, #86563a, #4b3226);
+}
+
+.mw-tree i {
+  position: absolute;
+  border-radius: 50%;
+  background: #40734b;
+  box-shadow: inset 12px 12px rgba(133, 164, 91, 0.25);
+}
+
+.mw-tree i:nth-child(1) {
+  width: 185px;
+  height: 170px;
+  left: 0;
+  top: 15px;
+}
+
+.mw-tree i:nth-child(2) {
+  width: 145px;
+  height: 145px;
+  right: 0;
+  top: 90px;
+}
+
+.mw-tree i:nth-child(3) {
+  width: 170px;
+  height: 145px;
+  left: 5px;
+  top: 130px;
+}
+
+.mw-arch {
+  position: absolute;
+  right: 13%;
+  top: 23%;
+  width: 250px;
+  height: 220px;
+  border: 7px solid rgba(239, 200, 108, 0.62);
+  border-bottom: 0;
+  border-radius: 150px 150px 0 0;
+}
+
+.mw-arch::before,
+.mw-arch::after {
+  content: "";
+  position: absolute;
+  bottom: -70px;
+  width: 10px;
+  height: 75px;
+  background: rgba(239, 200, 108, 0.62);
+}
+
+.mw-arch::before {
+  left: -7px;
+}
+
+.mw-arch::after {
+  right: -7px;
+}
+
+.mw-arch span {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  width: 15px;
+  height: 15px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #fff2a5;
+  box-shadow: 0 0 25px 7px rgba(255, 220, 111, 0.5);
+}
+
+/* =========================================================
+   BACKGROUND PARTICLES / FIREFLIES
+   ========================================================= */
+
+.mw-particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 240, 180, 0.75);
+  animation: particle 5s ease-in-out infinite;
+}
+
+.mw-firefly {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff0a5;
+  box-shadow:
+    0 0 9px 3px rgba(255, 218, 102, 0.8),
+    0 0 22px 5px rgba(255, 205, 87, 0.25);
+  animation: fly 4s ease-in-out infinite alternate;
+}
+
+/* =========================================================
+   TEXT — THIS IS THE IMPORTANT FIX
+   ========================================================= */
+
+.mw-header {
+  position: absolute;
+  z-index: 40;
+  top: 42px;
+  left: 70px;
+  color: #fff8e2;
+  pointer-events: none;
+  text-shadow: 0 2px 12px rgba(74, 51, 24, 0.12);
+}
+
+.mw-kicker {
+  margin-bottom: 3px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.mw-header strong {
+  display: block;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(48px, 5vw, 78px);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.mw-header strong span {
+  font-family: Georgia, serif;
+  font-size: 0.55em;
+}
+
+.mw-copy {
+  position: absolute;
+  z-index: 40;
+  left: 10%;
+  top: 31%;
+  width: min(500px, 38vw);
+  color: #fff8e2;
+  pointer-events: none;
+  text-shadow: 0 3px 16px rgba(64, 45, 24, 0.18);
+}
+
+.mw-copy small {
+  display: block;
+  margin-bottom: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.mw-copy h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(48px, 5vw, 78px);
+  font-weight: 500;
+  line-height: 0.92;
+}
+
+.mw-copy h1 em {
+  font-weight: 400;
+}
+
+.mw-copy p {
+  margin: 28px 0 0;
+  font-size: clamp(19px, 1.65vw, 25px);
+  line-height: 1.25;
+}
+
+.mw-copy label {
+  display: block;
+  margin-top: 30px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   FLOWERS
+   ========================================================= */
+
+/*
+  Flowers are BELOW the text.
+  The button itself is transparent, so the user gets a
+  small sparkle target before clicking.
+*/
+
+.mw-flowers {
+  z-index: 12;
+  pointer-events: none;
+}
+
+.mw-flower {
+  position: absolute;
+  width: 105px;
+  height: 145px;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 12;
+}
+
+.mw-flower .flower-hint {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 246, 185, 0.75);
+  font-family: Georgia, serif;
+  font-size: 18px;
+  opacity: 0.85;
+  animation: hintSparkle 1.8s ease-in-out infinite;
+}
+
+.mw-flower.sleeping:hover .flower-hint {
+  transform: translate(-50%, -50%) scale(1.5);
+  color: #fff6bd;
+}
+
+.mw-flower .stem {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 5px;
+  height: 70px;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: bottom;
+  border-radius: 10px;
+  background: linear-gradient(#7ca65c, #3e7048);
+  opacity: 0;
+}
+
+.mw-flower .head {
+  position: absolute;
+  left: 50%;
+  top: 3px;
+  width: 70px;
+  height: 70px;
+  transform: translateX(-50%) scale(0.1);
+  opacity: 0;
+}
+
+.mw-flower.bloomed .flower-hint {
+  display: none;
+}
+
+.mw-flower.bloomed .stem {
+  animation: stemGrow 0.65s ease-out forwards;
+}
+
+.mw-flower.bloomed .head {
+  animation: flowerPop 0.8s cubic-bezier(0.2, 1.45, 0.3, 1) forwards;
+}
+
+.mw-flower i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 45px;
+  transform-origin: 50% 100%;
+  border-radius: 60%;
+  background: linear-gradient(145deg, #ffdc73, #ee9f38);
+}
+
+.mw-flower i:nth-child(1) {
+  transform: translate(-50%, -100%) rotate(0);
+}
+
+.mw-flower i:nth-child(2) {
+  transform: translate(-50%, -100%) rotate(72deg);
+}
+
+.mw-flower i:nth-child(3) {
+  transform: translate(-50%, -100%) rotate(144deg);
+}
+
+.mw-flower i:nth-child(4) {
+  transform: translate(-50%, -100%) rotate(216deg);
+}
+
+.mw-flower i:nth-child(5) {
+  transform: translate(-50%, -100%) rotate(288deg);
+}
+
+.mw-flower b {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #87562c;
+}
+
+/* =========================================================
+   FLOWER CLICK BURST
+   ========================================================= */
+
+.mw-bursts {
+  z-index: 45;
+  pointer-events: none;
+}
+
+.mw-burst {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.mw-burst span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff1a5;
+  font-size: 20px;
+  text-shadow: 0 0 10px rgba(255, 220, 110, 0.95);
+  animation: burstOut 0.9s cubic-bezier(0.15, 0.8, 0.3, 1) forwards;
+  animation-delay: calc(var(--angle) * 0.001);
+}
+
+/* =========================================================
+   NOTE ARRIVAL
+   ========================================================= */
+
+.mw-note-arrival {
+  z-index: 28;
+  pointer-events: none;
+}
+
+.mw-gather-glow {
+  position: absolute;
+  left: 73%;
+  top: 61%;
+  width: 270px;
+  height: 270px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 248, 190, 0.65),
+    rgba(255, 220, 119, 0.18) 42%,
+    transparent 72%
+  );
+  animation: gatherGlow 2.7s ease-in-out both;
+}
+
+.mw-gather-lights {
+  position: absolute;
+  inset: 0;
+}
+
+.mw-gather-lights span {
+  position: absolute;
+  left: var(--sx);
+  top: var(--sy);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff3ae;
+  box-shadow:
+    0 0 12px 4px rgba(255, 221, 104, 0.9),
+    0 0 35px 8px rgba(255, 210, 94, 0.28);
+  animation: gatherLight 2.1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--delay);
+}
+
+.mw-note-message {
+  position: absolute;
+  left: 73%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  text-align: center;
+  opacity: 0;
+  animation: noteMessage 2.6s ease both;
+}
+
+.mw-note-message span {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.mw-note-message b {
+  display: block;
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   ENVELOPE
+   ========================================================= */
+
+.mw-envelope-wrap {
+  position: absolute;
+  z-index: 30;
+  right: 15%;
+  bottom: 12%;
+  width: 330px;
+  text-align: center;
+  animation: envelopeMaterialize 1.15s cubic-bezier(0.18, 0.9, 0.25, 1) both;
+}
+
+.mw-envelope {
+  position: relative;
+  width: 255px;
+  height: 165px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  filter: drop-shadow(0 20px 25px rgba(55, 35, 18, 0.25));
+  transition: transform 0.3s ease;
+}
+
+.mw-envelope:hover {
+  transform: translateY(-10px) rotate(-1deg) scale(1.04);
+}
+
+.mw-envelope::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 280px;
+  height: 280px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 233, 158, 0.55);
+  box-shadow:
+    0 0 35px rgba(255, 216, 112, 0.2),
+    inset 0 0 30px rgba(255, 232, 156, 0.12);
+  animation: envelopeRing 2.3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.env-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #a96b3e, #70432c);
+}
+
+.env-paper {
+  position: absolute;
+  z-index: 2;
+  left: 28px;
+  right: 28px;
+  top: -42px;
+  height: 155px;
+  padding: 25px 10px;
+  background: #f8dfaa;
+  color: #674329;
+  transform: rotate(-2deg);
+  box-shadow: 0 4px 12px rgba(50, 30, 14, 0.15);
+}
+
+.env-paper small {
+  display: block;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.env-paper b {
+  display: block;
+  font-family: "Great Vibes", cursive;
+  font-size: 35px;
+  font-weight: 400;
+}
+
+.env-flap {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  border-left: 127px solid transparent;
+  border-right: 127px solid transparent;
+  border-top: 87px solid #b87843;
+  transform-origin: top;
+}
+
+.env-seal {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: 76px;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #8e3930;
+  color: #ffe9b1;
+  font-size: 22px;
+}
+
+.env-sparkles {
+  position: absolute;
+  z-index: 8;
+  inset: -70px -40px;
+  pointer-events: none;
+}
+
+.env-sparkles i {
+  position: absolute;
+  color: #fff1a7;
+  font-style: normal;
+  text-shadow: 0 0 12px rgba(255, 219, 104, 0.95);
+  animation: twinkle 1.4s ease-in-out infinite;
+}
+
+.env-sparkles i:nth-child(1) {
+  left: 8%;
+  top: 30%;
+}
+
+.env-sparkles i:nth-child(2) {
+  left: 24%;
+  top: 5%;
+  animation-delay: 0.2s;
+}
+
+.env-sparkles i:nth-child(3) {
+  left: 52%;
+  top: 18%;
+  animation-delay: 0.4s;
+}
+
+.env-sparkles i:nth-child(4) {
+  right: 18%;
+  top: 2%;
+  animation-delay: 0.6s;
+}
+
+.env-sparkles i:nth-child(5) {
+  right: 4%;
+  top: 40%;
+  animation-delay: 0.8s;
+}
+
+.mw-envelope-hint {
+  margin-top: -5px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff1bb;
+}
+
+/* =========================================================
+   LETTER
+   ========================================================= */
+
+.mw-letter-wrap {
+  position: absolute;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  animation: letterIn 1s cubic-bezier(0.2, 1.2, 0.3, 1) both;
+}
+
+.mw-letter {
+  position: relative;
+  width: min(700px, 66vw);
+  max-height: 78vh;
+  padding: 42px 56px 32px;
+  overflow: hidden;
+  transform: rotate(-1deg);
+  color: #5b3b25;
+  background:
+    radial-gradient(
+      circle at 12% 10%,
+      rgba(120, 75, 35, 0.08),
+      transparent 22%
+    ),
+    #f7e2b4;
+  border: 1px solid rgba(110, 70, 35, 0.3);
+  box-shadow:
+    0 24px 45px rgba(45, 29, 16, 0.25),
+    inset 0 0 55px rgba(124, 78, 39, 0.08);
+}
+
+.mw-letter::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px solid rgba(112, 70, 34, 0.2);
+  pointer-events: none;
+}
+
+.letter-star {
+  text-align: center;
+  color: #9a6839;
+  font-size: 21px;
+}
+
+.mw-letter header {
+  text-align: center;
+  margin: 7px 0 23px;
+}
+
+.mw-letter header span {
+  display: block;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.mw-letter header b {
+  display: block;
+  font-family: "Great Vibes", cursive;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.letter-lines {
+  text-align: center;
+  max-height: 48vh;
+  overflow: hidden;
+}
+
+.letter-lines p {
+  margin: 0 0 10px;
+  font-size: 21px;
+  line-height: 1.18;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+.letter-lines p.show {
+  opacity: 1;
+  transform: none;
+}
+
+.mw-letter footer {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.mw-letter footer b {
+  display: block;
+  color: #9a4b3f;
+  font-size: 25px;
+}
+
+/* =========================================================
+   PORTAL / NEXT WORLD
+   ========================================================= */
+
+.mw-portal-screen {
+  position: absolute;
+  z-index: 60;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(64, 49, 31, 0.08);
+  animation: fade 1s both;
+}
+
+.mw-portal {
+  position: absolute;
+  width: min(43vw, 440px);
+  height: min(43vw, 440px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fff7c8 0,
+    rgba(255, 210, 105, 0.5) 22%,
+    rgba(255, 188, 75, 0.1) 50%,
+    transparent 70%
+  );
+  box-shadow: 0 0 80px rgba(255, 211, 108, 0.35);
+  animation: portal 3s ease-in-out infinite;
+}
+
+.mw-portal::before,
+.mw-portal::after {
+  content: "";
+  position: absolute;
+  inset: 16%;
+  border: 1px solid rgba(255, 238, 172, 0.75);
+  border-radius: 50%;
+}
+
+.mw-portal::after {
+  inset: 28%;
+  border-color: rgba(255, 251, 215, 0.5);
+}
+
+.mw-portal i {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff1a5;
+  box-shadow: 0 0 14px 4px rgba(255, 222, 111, 0.6);
+}
+
+.mw-portal i:nth-child(1) {
+  left: 12%;
+  top: 45%;
+}
+
+.mw-portal i:nth-child(2) {
+  right: 14%;
+  top: 29%;
+}
+
+.mw-portal i:nth-child(3) {
+  left: 28%;
+  bottom: 16%;
+}
+
+.mw-portal-copy {
+  position: relative;
+  margin-top: 465px;
+  text-align: center;
+}
+
+.mw-portal-copy small {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.mw-portal-copy h2 {
+  margin: 2px 0 15px;
+  font-family: "Great Vibes", cursive;
+  font-size: 72px;
+  font-weight: 400;
+}
+
+.mw-portal-copy button {
+  padding: 13px 22px;
+  border: 1px solid rgba(255, 239, 180, 0.6);
+  border-radius: 999px;
+  color: #fff5d4;
+  background: rgba(105, 68, 35, 0.25);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mw-portal-copy button b {
+  margin-left: 12px;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+/* =========================================================
+   HINT + MUSIC
+   ========================================================= */
+
+.mw-hint {
+  position: absolute;
+  z-index: 40;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  animation: hint 2.7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.mw-hint small {
+  display: block;
+  margin-top: 5px;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.mw-music {
+  position: absolute;
+  z-index: 40;
+  right: 42px;
+  top: 35px;
+  font-size: 26px;
+  pointer-events: none;
+}
+
+.mw-music span {
+  margin-left: 7px;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   CLOSING
+   ========================================================= */
+
+.is-closing {
+  animation: closeWorld 1.1s ease forwards;
+  pointer-events: none;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes sunBreath {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
+@keyframes cloudDrift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(80px);
+  }
+}
+
+@keyframes fly {
+  0% {
+    opacity: 0.35;
+    transform: translate(0, 0) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(10px, -15px) scale(1.15);
+  }
+  100% {
+    opacity: 0.45;
+    transform: translate(-7px, 10px) scale(0.85);
+  }
+}
+
+@keyframes particle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  40% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
+@keyframes hintSparkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+}
+
+@keyframes stemGrow {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@keyframes flowerPop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.08) rotate(-20deg);
+  }
+  65% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.12) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) rotate(0);
+  }
+}
+
+@keyframes burstOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.45);
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + cos(var(--angle)) * var(--distance)),
+        calc(-50% + sin(var(--angle)) * var(--distance))
+      )
+      scale(1.2);
+  }
+}
+
+@keyframes gatherLight {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(73vw - var(--sx)),
+        calc(61vh - var(--sy))
+      )
+      scale(0.25);
+  }
+}
+
+@keyframes gatherGlow {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.45);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  70% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+}
+
+@keyframes noteMessage {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(12px);
+  }
+  32%,
+  68% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+}
+
+@keyframes envelopeMaterialize {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.45) rotate(-6deg);
+    filter: blur(7px);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.06) rotate(2deg);
+    filter: blur(0);
+  }
+  78% {
+    transform: translateY(2px) scale(0.98) rotate(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes envelopeRing {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(0.86);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes letterIn {
+  from {
+    opacity: 0;
+    transform: scale(0.84) rotate(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes portal {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hint {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
+@keyframes closeWorld {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .mw-header {
+    left: 32px;
+    top: 28px;
+  }
+
+  .mw-copy {
+    left: 7%;
+    top: 28%;
+    width: 44vw;
+  }
+
+  .mw-copy h1 {
+    font-size: clamp(42px, 7vw, 64px);
+  }
+
+  .mw-envelope-wrap {
+    right: 7%;
+  }
+}
+
+@media (max-width: 650px) {
+  .mw-header {
+    left: 20px;
+    top: 22px;
+  }
+
+  .mw-kicker {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  .mw-header strong {
+    font-size: 48px;
+  }
+
+  .mw-copy {
+    left: 7%;
+    top: 30%;
+    width: 60vw;
+  }
+
+  .mw-copy h1 {
+    font-size: 46px;
+  }
+
+  .mw-copy p {
+    font-size: 17px;
+  }
+
+  .mw-tree {
+    transform: scale(0.7);
+    transform-origin: bottom;
+  }
+
+  .mw-envelope-wrap {
+    right: 50%;
+    bottom: 10%;
+    transform: translateX(50%);
+  }
+
+  .mw-note-message {
+    left: 50%;
+    top: 45%;
+  }
+
+  .mw-letter {
+    width: 90vw;
+    padding: 30px 28px;
+  }
+
+  .mw-letter header b {
+    font-size: 31px;
+  }
+
+  .letter-lines p {
+    font-size: 17px;
+  }
+
+  .mw-music {
+    right: 18px;
+    top: 22px;
+  }
+
+  .mw-music span {
+    display: none;
+  }
+}
+/* =========================================================
+   HIDDEN WORLD MUSIC PLAYER
+   ========================================================= */
+
+.magic-world audio {
+  display: none;
+}
